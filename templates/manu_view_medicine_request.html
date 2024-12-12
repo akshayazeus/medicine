@@ -1,0 +1,43 @@
+{% include 'manufacturer_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	
+	<h1 style="color: white">View Request</h1>
+	<table class="table" style="width: 1000px;color: white">
+		<tr>
+			<th>SL.NO</th>
+			<th>Distributor</th>
+			<th>Quantity</th>
+			<th>Status</th>
+			
+		</tr>
+		{% for row in data['med'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['fname']}} {{row['lname']}}</td>
+			<td>{{row['quantity']}}</td>
+			{% if row['status']=="Send to Manufacture" %}
+			<td><a class="btn btn-success" href="manu_add_stock?req={{row['request_id']}}&ph_id={{row['pharmacy_id']}}&dis_id={{row['distributer_id']}}&mid={{row['medicine_id']}}&qty={{row['quantity']}}">Send</a></td>
+			{% else %}
+			<td>{{row['status']}}</td>
+			{% endif %}
+			 
+		</tr>
+		{% endfor %}
+			
+	</table>
+	</table>
+</center>
+</form>
+</center>
+	
+	 </div>
+  </section><!-- End Hero -->
+{% include 'footer.html' %}

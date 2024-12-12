@@ -1,0 +1,114 @@
+{% include 'manufacturer_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	<form method="post">
+			{% if data['dir'] %}
+		<br><br><br><br>
+							<h2>Update Medicines</h2>
+			<table class="table" style="width: 600px;">
+				<tr>
+					<th>Medicine</th>
+					<td><input type="text" name="med" value="{{data['dir'][0]['medicine']}}" required pattern="[a-zA-Z\s]{0,30}" title="enter alphabets only" class="form-control"></td>
+				</tr>
+				<tr>
+					<th>Details</th>
+					<td><input type="text" name="det" value="{{data['dir'][0]['details']}}" required  class="form-control"></td>
+				</tr>
+				<tr>
+					<th>Rate</th>
+					<td><input type="text" name="rate" value="{{data['dir'][0]['rate']}}" required  class="form-control"></td>
+				</tr>
+				<tr>
+					<th>Quantity</th>
+					<td><input type="text" name="qua" value="{{data['dir'][0]['quantity']}}" required  class="form-control"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" name="update" value="UPDATE" class="btn btn-info btn-sm"></td>
+				</tr>
+			</table>
+					
+		{% else %}
+	<h1>ADD Medicine</h1>
+	<table class="table" style="width: 600px;color: white">
+		<tr>
+			<th>Name</th>
+			<td><input type="text"  class="form-control" name="a"></td>
+		</tr>
+		<tr>
+			<th>Type</th>
+			<td><input type="text" class="form-control" name="b"></td>
+		</tr>
+		<tr>
+			<th>Amount</th>
+			<td><input type="text" class="form-control" name="c"></td>
+		</tr>
+		<tr>
+			<th>Chemical Name</th>
+			<td><input type="text" class="form-control" name="d"></td>
+		</tr>
+		<tr>
+			<th>Nature</th>
+			<td><input type="text" class="form-control" name="e"></td>
+		</tr>
+		<tr>
+			<th>Unique Label</th>
+			<td><input type="text" class="form-control" name="f"></td>
+		</tr>
+		<tr>
+			<th>Side Effect</th>
+			<td><input type="text" class="form-control" name="g"></td>
+		</tr>
+		<tr>
+			<th>Storage</th>
+			<td><input type="text" class="form-control" name="h"></td>
+		</tr>
+	
+		<tr>
+			<td colspan="2" align="center"><input class="btn btn-info" type="submit" name="add" value="ADD"></td>
+		</tr>
+	</table>
+	{% endif %}
+
+	 </div>
+
+  </section><!-- End Hero -->
+<center>
+	<h1>View Medicine</h1>
+	<table class="table" style="width: 1000px;">
+		<tr>
+			<th>SL.NO</th>
+			<th>Medicine</th>
+			<th>Type</th>
+			<th>Amount</th>
+			<th>Chemical Name</th>
+			<th>Nature</th>
+			<th>Unique Label</th>
+			<th>Side Effect</th>
+			<th>Storage</th>
+		</tr>
+		{% for row in data['med'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['ty']}}</td>
+			<td>{{row['a']}}</td>
+			<td>{{row['cn']}}</td>
+			<td>{{row['n']}}</td>
+			<td>{{row['ul']}}</td>
+			<td>{{row['se']}}</td>
+			<td>{{row['s']}}</td>
+			<td><a class="btn btn-info" href="manufacturer_add_stock?mid={{row['mid']}}">Add stock</a></td>
+			<!-- <td><a class="btn btn-success" href="?action=update&id={{row['medicine_id']}}">Update</a></td> -->
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+{% include 'footer.html' %}

@@ -1,0 +1,29 @@
+{% include 'admin_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+
+<form method="post">
+	<table align="center" class="table" style="width: 1000px;color: white">
+		<h3 align="center" style="color: white">Feedback</h3>
+		<tr>
+			<th>Name</th>
+			<th>Feedback</th>
+			<th>Date</th>
+		</tr>
+		<tbody>
+			{% for row in data['feed'] %}
+			<tr>
+				<td>{{row['user']}}</td>
+				<td>{{row['feedback']}}</td>
+				<td>{{row['date']}}</td>
+			</tr>
+			{% endfor %}
+	
+	</table>
+</form>
+</tbody></table></form></div></section>
+{% include 'footer.html' %}

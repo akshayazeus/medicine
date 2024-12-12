@@ -1,0 +1,41 @@
+{% include 'admin_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+
+<form method="post">
+	<table align="center" class="table" style="width: 1000px;color: white">
+		<h3 align="center" style="color: white">DISTRIBUTOR</h3>
+		<tr>
+			<th>Name</th>
+			<th>Unique ID</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th>Email</th>
+
+			
+		</tr>
+		<tbody>
+			{% for row in data['diet'] %}
+			<tr>
+				<td>{{row['fname']}}</td>
+				<td>{{row['lname']}}</td>
+				<td>{{row['place']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+			
+
+				{% if row['usertype']=='pending' %}
+				<td><a href="?action=accept&lid={{row['login_id']}}" class="btn btn-info">Accept</a></td>
+				<td><a href="?action=reject&lid={{row['login_id']}}" class="btn btn-info">Reject</a></td>
+			{% endif %}
+			</tr>
+			{% endfor %}
+	
+	</table>
+</form>
+</tbody></table></form></div></section>
+{% include 'footer.html' %}

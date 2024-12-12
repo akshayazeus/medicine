@@ -1,0 +1,55 @@
+{% include 'manufacturer_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	<form method="post">
+		
+	<h1>ADD STOCK</h1>
+	<table class="table" style="width: 600px;color: white">
+		<tr>
+			<th>Stock</th>
+			<td><input type="text"  class="form-control" name="a"></td>
+		</tr>
+		<tr>
+			<th>Manufacture_Date</th>
+			<td><input type="date" class="form-control" name="b"></td>
+		</tr>
+		<tr>
+			<th>Expiry_Date</th>
+			<td><input type="date" class="form-control" name="c"></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center"><input class="btn btn-info" type="submit" name="add" value="ADD"></td>
+		</tr>
+	</table>
+
+	 </div>
+
+  </section><!-- End Hero -->
+<center>
+	<h1>View Stock</h1>
+	<table class="table" style="width: 1000px;">
+		<tr>
+			<th>SL.NO</th>
+			<th>Stock</th>
+			<th>Manufacture Date</th>
+			
+		</tr>
+		{% for row in data['med'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['stock']}}</td>
+			<td>{{row['mfg']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+{% include 'footer.html' %}
